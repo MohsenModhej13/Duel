@@ -1,0 +1,76 @@
+name: duel
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  bloc: ^8.1.4
+  http: ^1.2.1
+  equatable: ^2.0.5
+  animate_do: ^3.3.4
+  flutter_bloc: ^8.1.5
+  country_picker: ^2.0.25
+  flutter_localizations:
+    sdk: flutter
+  nested: ^1.0.0
+  shared_preferences: ^2.2.3
+  cupertino_icons: ^1.0.6
+  flutter_screenutil: ^5.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  build_runner: ^2.4.9
+  flutter_gen_runner: ^5.4.0
+  very_good_analysis: ^5.1.0
+  flutter_lints: ^3.0.0
+
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/Fonts/
+    - assets/Images/
+    - assets/Icons/
+
+  fonts:
+    - family: dana_bold
+      fonts:
+        - asset: assets/Fonts/dana_bold.ttf
+    - family: dana_demibold
+      fonts:
+        - asset: assets/Fonts/dana_demibold.ttf
+    - family: dana_medium
+      fonts:
+        - asset: assets/Fonts/dana_medium.ttf
+    - family: dana_regular
+      fonts:
+        - asset: assets/Fonts/dana_regular.ttf
+    - family: dana_light
+      fonts:
+        - asset: assets/Fonts/dana_light.ttf
+    - family: dana_extraL
+      fonts:
+        - asset: assets/Fonts/dana_extralight.ttf
+    - family: dana_thin
+      fonts:
+        - asset: assets/Fonts/dana_thin.ttf
