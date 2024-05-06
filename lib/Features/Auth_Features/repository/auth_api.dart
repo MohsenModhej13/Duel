@@ -6,8 +6,10 @@ import 'package:http/http.dart' as http;
 class AuthApiService {
   String endPointUrl = '$baseUrl/api/auth/sendCode';
 
-  Future<http.Response> sendOtpRequest(String phoneNumber,
-      {String? shogerCode,}) async {
+  Future<http.Response> sendOtpRequest(
+    String phoneNumber, {
+    String? shogerCode,
+  }) async {
     final parseUri = Uri.parse(endPointUrl);
     final headers = {
       'Content-type': 'application/json',
@@ -31,7 +33,8 @@ class AuthApiService {
     } else {
       // Handle errors
       throw Exception(
-          'Failed to send OTP request (Status Code: ${response.statusCode})',);
+        'Failed to send OTP request (Status Code: ${response.statusCode})',
+      );
     }
   }
 }

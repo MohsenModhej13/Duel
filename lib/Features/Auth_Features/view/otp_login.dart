@@ -1,12 +1,11 @@
 import 'package:duel/Core/Components/my_icon_button.dart';
 import 'package:duel/Core/Components/my_text.dart';
-import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/Theme/app_theme.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
-import 'package:duel/Features/Auth_Features/repository/auth_repo.dart';
+import 'package:duel/Features/Auth_Features/widget/phone_number_input.dart';
+import 'package:duel/Features/Auth_Features/widget/send_otp_button.dart';
 import 'package:duel/Features/Public_Features/bloc/theme-bloc/theme_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -84,72 +83,14 @@ class _OTPLoginState extends State<OTPLogin> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 16.sp),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: ResponsiveLayout.isTablet(context) ? 16.sp : 13.sp,
-              ),
-              child: Form(
-                key: formKey,
-                child: TextFormField(
-                  autofillHints: const [AutofillHints.oneTimeCode],
-                  maxLengthEnforcement: MaxLengthEnforcement.none,
-                  controller: phoneNumber,
-                  keyboardType: TextInputType.phone,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'شماره تماس خود را وارد کنید';
-                    } else if (value.trim().length != 11) {
-                      return 'شماره تماس شما باید ۱۱ رقم باشد';
-                    } else if (value.trim().startsWith('9')) {
-                      return 'شماره همراه نادرست می باشد';
-                    } else {
-                      return null; // Valid input
-                    }
-                  },
-                  decoration: InputDecoration(
-                    enabledBorder: border,
-                    focusedBorder: border,
-                    filled: true,
-                    fillColor: apptheme.tertiary,
-                    contentPadding: EdgeInsets.zero,
-                    hintText: 'شماره تماس',
-                    hintStyle: TextStyle(
-                      color: apptheme.secondary,
-                      fontFamily: 'dana_light',
-                      fontSize: 16.sp,
-                    ),
-                    prefixIcon: Assets.icons.mobile.image(
-                      color: apptheme.secondary,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            PhoneNumberInput(formKey: formKey, phoneNumber: phoneNumber, border: border, apptheme: apptheme),
             const Spacer(),
             // Login Button
-            ElevatedButton(
-              onPressed: () {
-                AuthRepository().callAuthApi(phoneNumber.text.trim());
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.sp),
-                ),
-                backgroundColor: const Color(0xff3F8DFD),
-                fixedSize: Size(50.sp, 18.sp),
-              ),
-              child: MyText(
-                title: 'تایید',
-                style: TextStyle(
-                  fontFamily: 'dana_demibold',
-                  color: Colors.white,
-                  fontSize: 17.sp,
-                ),
-              ),
-            ),
+            SendOTPButton(phoneNumber: phoneNumber),
           ],
         ),
       ),
     );
   }
 }
+

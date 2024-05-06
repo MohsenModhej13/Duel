@@ -4,7 +4,7 @@ class CustomTheme {
   static ThemeData lightMode = ThemeData(
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light(
-      background: Color(0xffEBEBEB),
+      background: Color(0xFFFFFEFE),
       onBackground: Color(0xffEDEDED),
       primary: Color(0xff1F1F1F),
       // Main Text Color,

@@ -1,16 +1,18 @@
+import 'package:duel/Config/Constant/constants.dart';
 import 'package:duel/Core/Components/my_icon_button.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Public_Features/bloc/nav-cubit/navbar_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget navBarItem(ColorScheme theme, NavbarCubit navBloc) {
+Widget navBarItem(NavbarCubit navBloc, BuildContext context) {
   return BottomAppBar(
-    height: Adaptive.h(0.21.dp),
-    surfaceTintColor: theme.background,
-    color:
-        theme.brightness == Brightness.light ? Colors.white : theme.background,
-    notchMargin: 6,
+    height: Constants.screenSize(context).height * 0.10.sp,
+    surfaceTintColor: Constants.theme(context).background,
+    color: Constants.theme(context).brightness == Brightness.light
+        ? Colors.white
+        : Constants.theme(context).background,
+    notchMargin: 7,
     shape: const CircularNotchedRectangle(),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,18 +36,18 @@ Widget navBarItem(ColorScheme theme, NavbarCubit navBloc) {
         ),
         const SizedBox(width: 20), // Space for FAB
         MyIconButton(
-          icon: Assets.icons.monitor.image(
-            color: navBloc.selectedIndex == 2 ? Colors.blue : Colors.grey,
+          icon: Assets.icons.game.image(
+            color: navBloc.selectedIndex == 3 ? Colors.blue : Colors.grey,
             fit: BoxFit.contain,
             width: 28,
           ),
           onPressed: () => navBloc.onIndexTap(2),
         ),
         MyIconButton(
-          icon: Assets.icons.game.image(
+          icon: Icon(
+            Icons.person,
             color: navBloc.selectedIndex == 3 ? Colors.blue : Colors.grey,
-            fit: BoxFit.contain,
-            width: 28,
+            size: 28,
           ),
           onPressed: () => navBloc.onIndexTap(3),
         ),

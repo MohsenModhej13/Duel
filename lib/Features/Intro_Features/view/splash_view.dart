@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:duel/Config/Constant/constants.dart';
 import 'package:duel/Core/Route/route_name.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,8 @@ class _SplashViewState extends State<SplashView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Assets.images.splashLogo.image(
-                width: Adaptive.w(32.sp),
-                height: Adaptive.h(20.sp),
+                width: Constants.screenSize(context).width,
+                height: Constants.screenSize(context).height * 0.5.sp,
               ),
             ],
           ),

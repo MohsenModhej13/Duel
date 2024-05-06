@@ -38,13 +38,11 @@ class AuthModel {
         'userId': userId,
       };
 
-  factory AuthModel.fromMap(Map<String, dynamic> map) {
-    return AuthModel(
-      phoneNumber: map['phoneNumber'] as String,
-      countriesCode: map['countriesCode'] as String,
-      verificationCode: map['verification_code'] as int,
-      stateUser: map['state_user'] as bool,
-      userId: map['userId'] as int,
-    );
-  }
+  factory AuthModel.fromMap(Map<String, dynamic> map) => AuthModel(
+        phoneNumber: map['phoneNumber'].toString(),
+        countriesCode: map['countriesCode'].toString(),
+        verificationCode: int.parse(map['verification_code']),
+        stateUser: map['state_user'] as bool,
+        userId: int.parse(map['userId']),
+      );
 }

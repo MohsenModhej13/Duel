@@ -1,3 +1,4 @@
+import 'package:duel/Config/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/Route/route_name.dart';
@@ -10,18 +11,17 @@ class IntroView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: theme.colorScheme.background,
+      backgroundColor: Constants.theme(context).background,
       body: Center(
         child: Column(
           children: [
             AspectRatio(
-              aspectRatio: 0.135.dp / 0.135.dp,
-              child: theme.brightness == Brightness.dark
+              aspectRatio: 1 / 1,
+              child: Constants.theme(context).brightness == Brightness.dark
                   ? Assets.images.avatarsDark.image()
                   : Assets.images.avatarsLight.image(),
             ),
@@ -44,7 +44,7 @@ class IntroView extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'dana_regular',
                   fontSize: 15.sp,
-                  color: theme.colorScheme.primary.withOpacity(0.6),
+                  color: Constants.theme(context).primary.withOpacity(0.6),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -53,13 +53,12 @@ class IntroView extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                // Navigator.pushReplacementNamed(context, RouteName.otp);
                 Navigator.pushReplacementNamed(context, RouteName.navbar);
               },
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(
-                  Adaptive.w(0.66.dp),
-                  Adaptive.h(0.176.dp), //  -> 10% of screen
+                  Constants.screenSize(context).width * 0.5.sp,
+                  18.sp,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.sp),
@@ -69,7 +68,7 @@ class IntroView extends StatelessWidget {
               child: MyText(
                 title: 'شروع کنید',
                 style: TextStyle(
-                  fontSize: 17.sp,
+                  fontSize: 16.sp,
                   fontFamily: 'dana_demibold',
                   color: Colors.white,
                 ),
