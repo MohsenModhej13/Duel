@@ -3,7 +3,6 @@ import 'package:duel/Core/Components/my_elevate_button.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const String postSubText =
@@ -12,10 +11,8 @@ const String postSubText =
 Widget postSection(BuildContext context) {
   return SingleChildScrollView(
     child: Column(
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         postBannerStatus(context),
-        SizedBox(height: 8.sp),
         Stack(
           children: [
             ClipRRect(
@@ -24,7 +21,7 @@ Widget postSection(BuildContext context) {
                 'assets/Images/rect.png',
                 fit: BoxFit.cover,
                 width: Constants.screenSize(context).width * 0.92.sp,
-                height: Constants.screenSize(context).height * 0.41.sp,
+                height: Constants.screenSize(context).height * 0.35.sp,
               ),
             ),
             Positioned(
@@ -52,26 +49,39 @@ Widget postSection(BuildContext context) {
                 ),
               ),
             ),
-            Positioned(
-              right: Constants.screenSize(context).width * 0.1,
-              left: Constants.screenSize(context).width * 0.1,
-              bottom: 0,
-              child: MyElevateButton(
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(
-                    0,
-                    20.sp,
-                  ),
-                ),
-                onPressed: () {},
-                child: MyText(
-                  title: 'انجام چالش',
-                  style: TextStyle(fontFamily: 'dana_medium', fontSize: 12.sp),
-                ),
-              ),
-            ),
+            // Positioned(
+            //   right: Constants.screenSize(context).width * 0.1,
+            //   left: Constants.screenSize(context).width * 0.1,
+            //   bottom: 0,
+            //   child: MyElevateButton(
+            //     style: ElevatedButton.styleFrom(
+            //       fixedSize: Size(0, 20.sp),
+            //     ),
+            //     onPressed: () {},
+            //     child: MyText(
+            //       title: 'انجام چالش',
+            //       style: TextStyle(fontFamily: 'dana_medium', fontSize: 12.sp),
+            //     ),
+            //   ),
+            // ),
           ],
-        )
+        ),
+        SizedBox(
+          height: 4.sp,
+        ),
+        MyElevateButton(
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(
+              Constants.screenSize(context).width * 0.7.sp,
+              Constants.screenSize(context).height * 0.012.sp,
+            ),
+          ),
+          onPressed: () {},
+          child: MyText(
+            title: 'انجام چالش',
+            style: TextStyle(fontFamily: 'dana_medium', fontSize: 12.sp),
+          ),
+        ),
       ],
     ),
   );
