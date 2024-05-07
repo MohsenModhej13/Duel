@@ -2,7 +2,7 @@ import 'package:duel/Config/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
-import 'package:duel/Features/Home_Features/widget/post_section.dart';
+import 'package:duel/Features/Posts_Features/widget/post_section.dart';
 import 'package:duel/Features/Home_Features/widget/story_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

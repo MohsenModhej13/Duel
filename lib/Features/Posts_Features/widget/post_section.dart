@@ -1,7 +1,8 @@
 import 'package:duel/Config/Constant/constants.dart';
-import 'package:duel/Core/Components/my_elevate_button.dart';
 import 'package:duel/Core/Components/my_text.dart';
-import 'package:duel/Core/Layout/responsive_layout.dart';
+import 'package:duel/Core/gen/assets.gen.dart';
+import 'package:duel/Features/Challenges_Features/widget/start_challenge_button.dart';
+import 'package:duel/Features/Posts_Features/widget/post_banner_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +22,7 @@ Widget postSection(BuildContext context) {
                 'assets/Images/rect.png',
                 fit: BoxFit.cover,
                 width: Constants.screenSize(context).width * 0.92.sp,
-                height: Constants.screenSize(context).height * 0.35.sp,
+                height: Constants.screenSize(context).height * 0.32.sp,
               ),
             ),
             Positioned(
@@ -66,83 +67,33 @@ Widget postSection(BuildContext context) {
             // ),
           ],
         ),
-        SizedBox(
-          height: 4.sp,
-        ),
-        MyElevateButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: Size(
-              Constants.screenSize(context).width * 0.7.sp,
-              Constants.screenSize(context).height * 0.012.sp,
-            ),
-          ),
-          onPressed: () {},
-          child: MyText(
-            title: 'انجام چالش',
-            style: TextStyle(fontFamily: 'dana_medium', fontSize: 12.sp),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget postBannerStatus(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 8),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(
-          child: ListTile(
-            horizontalTitleGap: 3.sp,
-            leading: Image.asset('assets/Icons/hani_prof.png'),
-            title: MyText(
-              title: 'هانیه کرباسچی',
-              style: TextStyle(
-                  fontFamily: 'dana_bold',
-                  fontSize: ResponsiveLayout.isTablet(context) ? 13.sp : 12.sp,
-                  color: Constants.theme(context).primary),
-            ),
-            subtitle: MyText(
-              title: '10 دقیقه قبل',
-              style: TextStyle(
-                fontFamily: 'dana_regular',
-                fontSize: ResponsiveLayout.isTablet(context) ? 10.sp : 9.sp,
-                color: Constants.theme(context).secondary,
-              ),
-            ),
+        SizedBox(height: 2.sp),
+        const StartChallengeButton(),
+        SizedBox(height: Constants.screenSize(context).height * 0.001.sp),
+        Divider(color: Constants.theme(context).surface),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.sp),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Assets.icons.archive
+                  .image(color: Constants.theme(context).primary),
+              Assets.icons.export
+                  .image(color: Constants.theme(context).primary),
+              const Spacer(),
+              Wrap(
+                children: [
+                  Assets.icons.comments.image(
+                    color: Constants.theme(context).primary,
+                  ),
+                  Assets.icons.like.image(
+                    color: Constants.theme(context).primary,
+                  ),
+                ],
+              )
+            ],
           ),
         ),
-        MyElevateButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor:
-                Constants.theme(context).brightness == Brightness.light
-                    ? Colors.grey[300]
-                    : Colors.grey[800],
-            fixedSize: Size(
-              Constants.screenSize(context).width * 0.3,
-              Constants.screenSize(context).height * 0.04,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.sp),
-              side: BorderSide(
-                color: Constants.theme(context).secondary,
-                width: 1,
-              ),
-            ),
-          ),
-          child: MyText(
-            title: 'دنبال کردن',
-            style: TextStyle(
-              fontSize: 12.sp,
-              color: Constants.theme(context).primary,
-              fontFamily: 'dana_demibold',
-            ),
-            textAlign: TextAlign.center,
-          ),
-        )
       ],
     ),
   );

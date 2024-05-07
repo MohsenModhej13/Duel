@@ -51,8 +51,12 @@ class $AssetsIconsGen {
   /// File path: assets/Icons/archive.png
   AssetGenImage get archive => const AssetGenImage('assets/Icons/archive.png');
 
-  /// File path: assets/Icons/direct_message.png
+  /// File path: assets/Icons/comments.png
   AssetGenImage get comments =>
+      const AssetGenImage('assets/Icons/comments.png');
+
+  /// File path: assets/Icons/direct_message.png
+  AssetGenImage get directMessage =>
       const AssetGenImage('assets/Icons/direct_message.png');
 
   /// File path: assets/Icons/export.png
@@ -61,8 +65,15 @@ class $AssetsIconsGen {
   /// File path: assets/Icons/game.png
   AssetGenImage get game => const AssetGenImage('assets/Icons/game.png');
 
+  /// File path: assets/Icons/hani_prof.png
+  AssetGenImage get haniProf =>
+      const AssetGenImage('assets/Icons/hani_prof.png');
+
   /// File path: assets/Icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/Icons/home.png');
+
+  /// File path: assets/Icons/like.png
+  AssetGenImage get like => const AssetGenImage('assets/Icons/like.png');
 
   /// File path: assets/Icons/messages.png
   AssetGenImage get messages =>
@@ -81,9 +92,12 @@ class $AssetsIconsGen {
   List<AssetGenImage> get values => [
         archive,
         comments,
+        directMessage,
         export,
         game,
+        haniProf,
         home,
+        like,
         messages,
         mobile,
         monitor,
@@ -102,6 +116,9 @@ class $AssetsImagesGen {
   AssetGenImage get avatarsLight =>
       const AssetGenImage('assets/Images/avatars_light.png');
 
+  /// File path: assets/Images/rect.png
+  AssetGenImage get rect => const AssetGenImage('assets/Images/rect.png');
+
   /// File path: assets/Images/safe.png
   AssetGenImage get safe => const AssetGenImage('assets/Images/safe.png');
 
@@ -114,7 +131,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [avatarsDark, avatarsLight, safe, shield, splashLogo];
+      [avatarsDark, avatarsLight, rect, safe, shield, splashLogo];
 }
 
 class Assets {
