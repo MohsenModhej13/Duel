@@ -1,4 +1,4 @@
-part of 'otp_bloc.dart';
+part of 'send_otp_bloc.dart';
 
 @immutable
 abstract class OtpEvent {}

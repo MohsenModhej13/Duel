@@ -7,14 +7,14 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../Config/Constant/constants.dart';
 
-class TwoFactorLogin extends StatefulWidget {
-  const TwoFactorLogin({super.key});
+class CheckOTPView extends StatefulWidget {
+  const CheckOTPView({super.key});
 
   @override
-  State<TwoFactorLogin> createState() => _TwoFactorLoginState();
+  State<CheckOTPView> createState() => _CheckOTPViewState();
 }
 
-class _TwoFactorLoginState extends State<TwoFactorLogin> {
+class _CheckOTPViewState extends State<CheckOTPView> {
   late TextEditingController pinCodeController;
   @override
   void initState() {
@@ -163,7 +163,7 @@ class _TwoFactorLoginState extends State<TwoFactorLogin> {
               ),
               textAlign: TextAlign.center,
             ),
-            Container(
+            SizedBox(
               width: Constants.screenSize(context).width * 0.8,
               child: ElevatedButton(
                 onPressed: () {},
