@@ -18,7 +18,7 @@ class SendOTPBloc extends Bloc<OtpEvent, SendOTPState> {
     emit(SendOTPLoading());
 
     try {
-      final token = await authRepo.callAuthApi(event.phoneNumber);
+      final token = await authRepo.callSendOtpApi(event.phoneNumber);
       emit(SendOTPSuccess(token));
     } catch (e) {}
   }
