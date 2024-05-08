@@ -1,4 +1,7 @@
+import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Features/Explore_Features/widget/search_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ExploreView extends StatefulWidget {
   const ExploreView({super.key});
@@ -8,35 +11,37 @@ class ExploreView extends StatefulWidget {
 }
 
 class _ExploreViewState extends State<ExploreView> {
-  String searchText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My App'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Handle search button press
-              // You can navigate to a dedicated search screen here
-              print("Search button pressed! Search query: $searchText");
-            },
+      body: Column(
+        children: [
+          const Row(
+            children: [SearchInput()],
           ),
-          TextField(
-            decoration:const InputDecoration(
-              hintText: 'Search...',
-              border: InputBorder.none, // removes default border
-              contentPadding: EdgeInsets.zero, // removes padding
-            ),
-            onChanged: (value) {
-              setState(() {
-                searchText = value;
-              });
-            },
-          ),
+          SizedBox(height: Constants.screenSize(context).height * 0.012),
+          exploreBody(),
         ],
       ),
     );
   }
+}
+
+Widget exploreBody() {
+  const imageApi = "https://picsum.photos/200/";
+  return Expanded(
+    child: MasonryGridView.builder(
+      itemCount: 20,
+      gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.all(3),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Image.network(imageApi), // Use the defined imageApi URL
+        ),
+      ),
+    ),
+  );
 }

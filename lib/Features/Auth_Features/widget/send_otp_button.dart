@@ -1,15 +1,13 @@
 import 'package:duel/Config/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
+import 'package:duel/Core/Route/route_name.dart';
 import 'package:duel/Features/Auth_Features/bloc/send_otp_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SendOTPButton extends StatelessWidget {
-  const SendOTPButton({
-    super.key,
-    required this.phoneNumber,
-  });
+  const SendOTPButton({super.key, required this.phoneNumber});
 
   final TextEditingController phoneNumber;
 
@@ -19,12 +17,17 @@ class SendOTPButton extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
           onPressed: () {
+            //Todo: DONT USE THIS
             // AuthRepository().callAuthApi(phoneNumber.text.trim());
-            BlocProvider.of<SendOTPBloc>(context).add(
-              CallOtpEvent(
-                phoneNumber: phoneNumber.text.trim(),
-              ),
-            );
+
+            // Todo: USE THIS
+            // BlocProvider.of<SendOTPBloc>(context).add(
+            //   CallOtpEvent(
+            //     phoneNumber: phoneNumber.text.trim(),
+            //   ),
+            // );
+
+            Navigator.pushReplacementNamed(context, RouteName.navbar);
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
