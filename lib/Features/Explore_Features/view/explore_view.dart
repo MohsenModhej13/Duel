@@ -11,7 +11,12 @@ class _ExploreViewState extends State<ExploreView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("salam"),),
+      appBar: AppBar(
+        title: Text("salam"),
+      ),
+      body: Container(
+        child: Text('Nice'),
+      ),
     );
   }
 }
