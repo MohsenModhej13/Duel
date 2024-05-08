@@ -1,5 +1,4 @@
 import 'package:duel/Config/Constant/constants.dart';
-import 'package:duel/Features/Explore_Features/view/explore_view.dart';
 import 'package:duel/Features/Home_Features/view/home_view.dart';
 import 'package:duel/Features/Posts_Features/widget/add_post_button.dart';
 import 'package:duel/Features/Public_Features/bloc/nav-cubit/navbar_cubit.dart';
@@ -26,7 +25,6 @@ class AppNavigationBar extends StatelessWidget {
 
   List<Widget> get navScreen => [
         const HomeView(),
-        const ExploreView(),
         Container(),
         Container(),
         Container(),
