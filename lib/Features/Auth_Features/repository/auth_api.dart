@@ -4,13 +4,14 @@ import 'package:duel/Config/Constant/base_url.dart';
 import 'package:http/http.dart' as http;
 
 class AuthApiService {
-  String endPointUrl = '$baseUrl/api/auth/SendOtp';
+  String sendOTPURL = '$baseUrl/api/auth/SendOtp';
+  String checkOTPURL = '$baseUrl/api/auth/CheckOtp';
 
   Future<http.Response> sendOtpRequest(
     String phoneNumber, {
     String? shogerCode,
   }) async {
-    final parseUri = Uri.parse(endPointUrl);
+    final parseUri = Uri.parse(sendOTPURL);
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',
