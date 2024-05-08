@@ -1,7 +1,6 @@
 import 'package:duel/Config/Constant/constants.dart';
 import 'package:duel/Features/Explore_Features/widget/search_input.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ExploreView extends StatefulWidget {
@@ -17,12 +16,10 @@ class _ExploreViewState extends State<ExploreView> {
     return Scaffold(
       body: Column(
         children: [
-          const Row(
-            children: [
-              SearchInput(),
-            ],
+          const SearchInput(),
+          const Divider(
+            color: Colors.black87,
           ),
-          SizedBox(height: Constants.screenSize(context).height * 0.01),
           exploreBody(),
         ],
       ),
@@ -31,14 +28,15 @@ class _ExploreViewState extends State<ExploreView> {
 }
 
 Widget exploreBody() {
-  const imageApi = "https://picsum.photos/200/";
   return Expanded(child: cardTile);
 }
 
-GridView cardTile = GridView.builder(
-  gridDelegate: SliverQuiltedGridDelegate(
+Padding cardTile = Padding(
+  padding: const EdgeInsets.only(left: 4, right: 4, top: 0),
+  child: GridView.builder(
+    gridDelegate: SliverQuiltedGridDelegate(
       crossAxisCount: 3,
-      mainAxisSpacing: 2,
+      mainAxisSpacing: 0,
       crossAxisSpacing: 2,
       pattern: const [
         QuiltedGridTile(2, 1),
@@ -47,28 +45,31 @@ GridView cardTile = GridView.builder(
         QuiltedGridTile(1, 1),
         QuiltedGridTile(1, 1),
       ],
-      repeatPattern: QuiltedGridRepeatPattern.inverted),
-  itemCount: 50,
-  itemBuilder: (context, index) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Image.network(
-            "https://picsum.photos/200/",
-            fit: BoxFit.cover,
+      repeatPattern: QuiltedGridRepeatPattern.inverted,
+    ),
+    itemCount: 40,
+    itemBuilder: (context, index) {
+      return Stack(
+        fit: StackFit.expand,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(7),
+            child: Image.network(
+              "https://picsum.photos/200/",
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+            ),
           ),
-        ),
-        const Positioned(
-          top: 5,
-          left: 5,
-          child: Icon(
-            Icons.video_collection,
-            color: Colors.white,
+          const Positioned(
+            top: 5,
+            left: 5,
+            child: Icon(
+              Icons.video_collection,
+              color: Colors.white,
+            ),
           ),
-        ),
-      ],
-    );
-  },
+        ],
+      );
+    },
+  ),
 );

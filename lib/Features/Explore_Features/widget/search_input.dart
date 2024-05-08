@@ -16,34 +16,33 @@ class _SearchInputState extends State<SearchInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: Constants.screenSize(context).height * 0.04,
-          horizontal: 25,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: Constants.screenSize(context).height * 0.03,
+        horizontal: 25,
+
+      ),
+      child: TextField(
+        controller: searchCTRL,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.search),
+          hintText: 'جست و جو',
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 2,
+              color: Constants.theme(context).surface,
+            ),
+            borderRadius: BorderRadius.circular(15.sp),
+          ), // removes default border
+          contentPadding: EdgeInsets.zero, // removes padding
         ),
-        child: TextField(
-          controller: searchCTRL,
-          decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.search),
-            hintText: 'جست و جو',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                width: 2,
-                color: Constants.theme(context).surface,
-              ),
-              borderRadius: BorderRadius.circular(15.sp),
-            ), // removes default border
-            contentPadding: EdgeInsets.zero, // removes padding
-          ),
-          onChanged: (value) {
-            setState(
-              () {
-                searchText = value;
-              },
-            );
-          },
-        ),
+        onChanged: (value) {
+          setState(
+            () {
+              searchText = value;
+            },
+          );
+        },
       ),
     );
   }
