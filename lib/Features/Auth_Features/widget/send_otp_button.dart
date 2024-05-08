@@ -21,13 +21,13 @@ class SendOTPButton extends StatelessWidget {
             // AuthRepository().callAuthApi(phoneNumber.text.trim());
 
             // Todo: USE THIS
-            // BlocProvider.of<SendOTPBloc>(context).add(
-            //   CallOtpEvent(
-            //     phoneNumber: phoneNumber.text.trim(),
-            //   ),
-            // );
+            BlocProvider.of<SendOTPBloc>(context).add(
+              CallOtpEvent(
+                phoneNumber: phoneNumber.text.trim(),
+              ),
+            );
 
-            Navigator.pushReplacementNamed(context, RouteName.navbar);
+            // Navigator.pushReplacementNamed(context, RouteName.checkOtp);
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(

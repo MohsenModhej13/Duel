@@ -1,0 +1,3 @@
+class CheckOtpModel{
+  // CheckOtpModel({});
+}
