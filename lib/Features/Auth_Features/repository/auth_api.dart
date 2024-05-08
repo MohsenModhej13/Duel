@@ -4,7 +4,7 @@ import 'package:duel/Config/Constant/base_url.dart';
 import 'package:http/http.dart' as http;
 
 class AuthApiService {
-  String endPointUrl = '$baseUrl/api/auth/sendCode';
+  String endPointUrl = '$baseUrl/api/auth/SendOtp';
 
   Future<http.Response> sendOtpRequest(
     String phoneNumber, {
@@ -20,10 +20,9 @@ class AuthApiService {
       'phoneNumber': phoneNumber,
       'countriesCode': '98', // Consider making this dynamic or optional
       'TokenNotification': null,
-      'shogerCode': shogerCode, // Optional parameter
+      'shogerCode': shogerCode ?? "خوش آمدید", // Optional parameter
     };
     final body = jsonEncode(map);
-    print(body);
 
     final response = await http.post(parseUri, headers: headers, body: body);
 

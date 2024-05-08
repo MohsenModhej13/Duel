@@ -20,6 +20,8 @@ dependencies:
   animate_do: ^3.3.4
   flutter_bloc: ^8.1.5
   country_picker: ^2.0.25
+  pin_code_fields: ^8.0.1
+
   flutter_localizations:
     sdk: flutter
   nested: ^1.0.0

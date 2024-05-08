@@ -3,17 +3,37 @@ import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class TwoFactorLogin extends StatelessWidget {
+import '../../../Config/Constant/constants.dart';
+
+class TwoFactorLogin extends StatefulWidget {
   const TwoFactorLogin({super.key});
+
+  @override
+  State<TwoFactorLogin> createState() => _TwoFactorLoginState();
+}
+
+class _TwoFactorLoginState extends State<TwoFactorLogin> {
+  late TextEditingController pinCodeController;
+  @override
+  void initState() {
+    pinCodeController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pinCodeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final appTheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Center(
@@ -55,17 +75,82 @@ class TwoFactorLogin extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20.sp),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  otpBoxView(context),
-                  otpBoxView(context),
-                  otpBoxView(context),
-                  otpBoxView(context),
-                  otpBoxView(context),
-                  otpBoxView(context),
-                ],
+            Container(
+              margin: EdgeInsets.only(
+                  bottom: 10.0,
+                  left: Constants.screenSize(context).width * 0.07,
+                  right: Constants.screenSize(context).width * 0.07),
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: PinCodeTextField(
+                  appContext: context,
+                  textStyle:const TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w400),
+                  pastedTextStyle: TextStyle(
+                    color: Colors.green.shade600,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  length: 6,
+                  // obscureText: true,
+                  // obscuringCharacter: '*',
+                  // obscuringWidget: const FlutterLogo(
+                  //   size: 24,
+                  // ),
+                  // blinkWhenObscuring: true,
+                  // animationType: AnimationType.fade,
+                  validator: (v) {
+                    if (v!.length < 6) {
+                      return "کد را کامل پر کنید";
+                    } else {
+                      return null;
+                    }
+                  },
+                  pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.box,
+                    borderRadius: BorderRadius.circular(10),
+                    borderWidth: 0.1,
+                    fieldHeight: 50,
+                    fieldWidth: 40,
+                    activeFillColor: Colors.white,
+                    activeColor: Colors.lightBlue,
+                    selectedColor: Colors.lightBlue,
+                    selectedFillColor: Colors.blueAccent,
+                    inactiveFillColor: Colors.white,
+                    inactiveColor: Colors.lightBlue,
+                  ),
+                  cursorColor: Colors.black,
+                  animationDuration: const Duration(milliseconds: 300),
+                  enableActiveFill: true,
+                  autoDisposeControllers: false,
+                  controller: pinCodeController,
+                  keyboardType: TextInputType.number,
+                  boxShadows: const [
+                    BoxShadow(
+                      offset: Offset(0, 1),
+                      color: Colors.black12,
+                      blurRadius: 10,
+                    )
+                  ],
+                  onCompleted: (v) {
+                    debugPrint("Completed");
+                  },
+                  // onTap: () {
+                  //   print("Pressed");
+                  // },
+                  onChanged: (value) {
+                    debugPrint(value);
+                    // setState(() {
+                    // currentText = value;
+                    // });
+                  },
+                  beforeTextPaste: (text) {
+                    debugPrint("Allowing to paste $text");
+                    //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                    //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                    return true;
+                  },
+                ),
               ),
             ),
             SizedBox(height: 16.sp),
@@ -78,21 +163,24 @@ class TwoFactorLogin extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.sp),
+            Container(
+              width: Constants.screenSize(context).width * 0.8,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.sp),
+                  ),
+                  backgroundColor: const Color(0xff3F8DFD),
+                  fixedSize: Size(64.sp, 17.sp),
                 ),
-                backgroundColor: const Color(0xff3F8DFD),
-                fixedSize: Size(64.sp, 17.sp),
-              ),
-              child: MyText(
-                title: 'تایید',
-                style: TextStyle(
-                  fontFamily: 'dana_demibold',
-                  fontSize: 16.8.sp,
+                child: MyText(
+                  title: 'تایید',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'dana_demibold',
+                    fontSize: 16.8.sp,
+                  ),
                 ),
               ),
             ),

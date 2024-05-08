@@ -1,5 +1,6 @@
 import 'package:duel/Core/Components/my_icon_button.dart';
 import 'package:duel/Core/Components/my_text.dart';
+import 'package:duel/Core/Route/app_route.dart';
 import 'package:duel/Core/Theme/app_theme.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Auth_Features/widget/phone_number_input.dart';
@@ -8,6 +9,8 @@ import 'package:duel/Features/Public_Features/bloc/theme-bloc/theme_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../Core/Route/route_name.dart';
 
 class OTPLogin extends StatefulWidget {
   const OTPLogin({super.key});
@@ -86,7 +89,10 @@ class _OTPLoginState extends State<OTPLogin> {
             PhoneNumberInput(formKey: formKey, phoneNumber: phoneNumber, border: border, apptheme: apptheme),
             const Spacer(),
             // Login Button
-            SendOTPButton(phoneNumber: phoneNumber),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(RouteName.checkOtp);
+            }, child: Text("asdas"))
+            // SendOTPButton(phoneNumber: phoneNumber),
           ],
         ),
       ),

@@ -11,9 +11,9 @@ typedef RouteGenerator = Map<String, Widget Function(BuildContext)>;
 
 RouteGenerator get appRoute => {
       RouteName.splash: (context) => const SplashView(),
-      RouteName.otp: (context) => const OTPLogin(),
+      RouteName.sendOtp: (context) => const OTPLogin(),
+      RouteName.checkOtp: (context) => const TwoFactorLogin(),
       RouteName.intro: (context) => const IntroView(),
-      RouteName.phoneNumber: (context) => const TwoFactorLogin(),
       RouteName.home: (context) => const HomeView(),
       RouteName.navbar: (context) => const AppNavigationBar(),
     };

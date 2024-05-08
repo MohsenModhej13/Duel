@@ -1,8 +1,9 @@
 class RouteName {
   static const String splash = '/';
-  static const String phoneNumber = '/phoneNumber';
-  static const String otp = '/otp';
-  static const String intro = '/intro_view';
-  static const String home = '/home';
-  static const String navbar = '/navbar';
+  static const String phoneNumber = '/PhoneNumber';
+  static const String sendOtp = '/SendOtp';
+  static const String checkOtp = '/CheckOtp';
+  static const String intro = '/Intro_View';
+  static const String home = '/Home';
+  static const String navbar = '/Navbar';
 }
