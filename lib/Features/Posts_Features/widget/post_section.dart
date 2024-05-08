@@ -9,9 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 const String postSubText =
     'چه کسی عاشق معما و بازی‌های فکری چالش برانگیز نیست؟ معماها به ما کمک می‌کنند بیشتر راجع به مسائل مختلف فکر کنم و فکر خودمان را به چالش بکشیم. اغلب معماها از تکنیک‌هایی استفاده می‌کنند که ذهن ...';
 
-Widget postSection(BuildContext context) {
-  return SingleChildScrollView(
-    child: Column(
+Widget postSection(BuildContext context) => Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         postBannerStatus(context),
         Stack(
@@ -22,7 +21,7 @@ Widget postSection(BuildContext context) {
                 'assets/Images/rect.png',
                 fit: BoxFit.cover,
                 width: Constants.screenSize(context).width * 0.92.sp,
-                height: Constants.screenSize(context).height * 0.32.sp,
+                height: Constants.screenSize(context).height * 0.30.sp,
               ),
             ),
             Positioned(
@@ -67,7 +66,7 @@ Widget postSection(BuildContext context) {
             // ),
           ],
         ),
-        SizedBox(height: 2.sp),
+        SizedBox(height: 7.sp),
         const StartChallengeButton(),
         SizedBox(height: Constants.screenSize(context).height * 0.001.sp),
         Divider(color: Constants.theme(context).surface),
@@ -95,6 +94,4 @@ Widget postSection(BuildContext context) {
           ),
         ),
       ],
-    ),
-  );
-}
+    );

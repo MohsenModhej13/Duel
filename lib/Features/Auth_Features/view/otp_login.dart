@@ -83,7 +83,11 @@ class _OTPLoginState extends State<OTPLogin> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 16.sp),
-            PhoneNumberInput(formKey: formKey, phoneNumber: phoneNumber, border: border, apptheme: apptheme),
+            PhoneNumberInput(
+                formKey: formKey,
+                phoneNumber: phoneNumber,
+                border: border,
+                apptheme: apptheme),
             const Spacer(),
             // Login Button
             SendOTPButton(phoneNumber: phoneNumber),
@@ -93,4 +97,3 @@ class _OTPLoginState extends State<OTPLogin> {
     );
   }
 }
-
