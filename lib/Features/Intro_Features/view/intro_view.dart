@@ -53,7 +53,7 @@ class IntroView extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, RouteName.navbar);
+                Navigator.pushReplacementNamed(context, RouteName.sendOtp);
               },
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(
