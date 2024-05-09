@@ -21,7 +21,7 @@ class AuthApiService {
       'phoneNumber': phoneNumber,
       'countriesCode': '98', // Consider making this dynamic or optional
       'TokenNotification': null,
-      'shogerCode': shogerCode ?? "خوش آمدید", // Optional parameter
+      'shogerCode': "خوش آمدید", // Optional parameter
     };
     final body = jsonEncode(map);
 
@@ -34,6 +34,37 @@ class AuthApiService {
       // Handle errors
       throw Exception(
         'Failed to send OTP request (Status Code: ${response.statusCode})',
+      );
+    }
+  }
+
+  Future<http.Response> checkOtpRequest(
+    String phoneNumber, {
+    String? otpPassword,
+  }) async {
+    final parseUri = Uri.parse(checkOTPURL);
+    final headers = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    final map = {
+      'phoneNumber': phoneNumber,
+      'otpPassword': otpPassword,
+    };
+    final body = jsonEncode(map);
+
+    final response = await http.post(parseUri, headers: headers, body: body);
+
+    print(response.body);
+
+    if (response.statusCode == 200) {
+      // Successful request
+      return response;
+    } else {
+      // Handle errors
+      throw Exception(
+        'Failed to check OTP request (Status Code: ${response.statusCode})',
       );
     }
   }

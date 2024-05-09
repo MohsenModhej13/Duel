@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-class AuthModel {
-  AuthModel({
+import 'package:duel/Config/Constant/constants.dart';
+
+class SendOTPModel {
+  SendOTPModel({
     required this.phoneNumber,
     required this.countriesCode,
     required this.verificationCode,
@@ -15,14 +17,14 @@ class AuthModel {
   final bool stateUser;
   final int userId;
 
-  AuthModel copyWith({
+  SendOTPModel copyWith({
     String? phoneNumber,
     String? countriesCode,
     int? verificationCode,
     String? stateUser,
     int? userId,
   }) =>
-      AuthModel(
+      SendOTPModel(
         phoneNumber: phoneNumber ?? this.phoneNumber,
         countriesCode: countriesCode ?? this.countriesCode,
         verificationCode: verificationCode ?? this.verificationCode,
@@ -30,7 +32,7 @@ class AuthModel {
         userId: userId ?? this.userId,
       );
 
-  Map<String, dynamic> toMap() => {
+  Mapper toMap() => {
         'phoneNumber': phoneNumber,
         'countriesCode': countriesCode,
         'verification_code': verificationCode,
@@ -38,7 +40,7 @@ class AuthModel {
         'userId': userId,
       };
 
-  factory AuthModel.fromMap(Map<String, dynamic> map) => AuthModel(
+  factory SendOTPModel.fromMap(Mapper map) => SendOTPModel(
         phoneNumber: map['phoneNumber'].toString(),
         countriesCode: map['countriesCode'].toString(),
         verificationCode: int.parse(map['verification_code']),

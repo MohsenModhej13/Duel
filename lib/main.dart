@@ -1,5 +1,5 @@
-import 'package:duel/Features/Auth_Features/repository/auth_repo.dart';
-import 'package:duel/Features/Auth_Features/bloc/send_otp_bloc.dart';
+import 'package:duel/Features/Auth_Features/bloc/send-otp-bloc/send_otp_bloc.dart';
+import 'package:duel/Features/Auth_Features/repository/send_otp_repo.dart';
 import 'package:duel/Features/Public_Features/bloc/nav-cubit/navbar_cubit.dart';
 import 'package:duel/Features/Public_Features/bloc/theme-bloc/theme_bloc.dart';
 import 'package:duel/advance_main.dart';
@@ -11,7 +11,7 @@ void main() => runApp(
       MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => ThemeBloc()),
-          BlocProvider(create: (context) => SendOTPBloc(AuthRepository())),
+          BlocProvider(create: (context) => SendOTPBloc(SendOTPRepo())),
           BlocProvider(create: (context) => NavbarCubit()),
         ],
         child: ScreenUtilInit(

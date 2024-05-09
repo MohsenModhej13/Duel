@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:duel/Features/Auth_Features/repository/auth_repo.dart';
+import 'package:duel/Features/Auth_Features/repository/send_otp_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'send_otp_event.dart';
@@ -12,13 +12,13 @@ class SendOTPBloc extends Bloc<OtpEvent, SendOTPState> {
     on<CallOtpEvent>(callOTP);
   }
 
-  final AuthRepository authRepo;
+  final SendOTPRepo authRepo;
 
   FutureOr<void> callOTP(CallOtpEvent event, Emitter<SendOTPState> emit) async {
     emit(SendOTPLoading());
 
     try {
-      final token = await authRepo.callAuthApi(event.phoneNumber);
+      final token = await authRepo.callSendOtpApi(event.phoneNumber);
       emit(SendOTPSuccess(token));
     } catch (e) {}
   }
