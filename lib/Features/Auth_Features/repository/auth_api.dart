@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:duel/Config/Constant/base_url.dart';
+import 'package:duel/Core/Constant/base_url.dart';
 import 'package:http/http.dart' as http;
 
 class AuthApiService {

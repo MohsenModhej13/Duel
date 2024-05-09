@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 
 class CheckOTPModel {
   CheckOTPModel({

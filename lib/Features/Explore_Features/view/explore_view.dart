@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Features/Explore_Features/widget/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

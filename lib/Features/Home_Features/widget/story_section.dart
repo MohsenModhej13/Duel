@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Features/Home_Features/model/story_people_list.dart';
 import 'package:flutter/material.dart';

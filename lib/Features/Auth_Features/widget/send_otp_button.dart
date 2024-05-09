@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Route/route_name.dart';
 import 'package:duel/Features/Auth_Features/bloc/send-otp-bloc/send_otp_bloc.dart';
@@ -7,11 +7,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class SendOTPButton extends StatelessWidget {
+class SendOTPButton extends StatefulWidget {
   const SendOTPButton({super.key, required this.phoneNumber});
 
   final TextEditingController phoneNumber;
 
+  @override
+  State<SendOTPButton> createState() => _SendOTPButtonState();
+}
+
+class _SendOTPButtonState extends State<SendOTPButton> {
   @override
   Widget build(BuildContext context) {
     final spinkitCircle = SpinKitFadingCircle(
@@ -24,7 +29,13 @@ class SendOTPButton extends StatelessWidget {
     return BlocListener<SendOTPBloc, SendOTPState>(
       listener: (context, state) {
         if (state is SendOTPSuccess) {
-          Navigator.pushReplacementNamed(context, RouteName.checkOtp);
+          Navigator.pushReplacementNamed(
+            context,
+            RouteName.checkOtp,
+            arguments: {
+              'phoneNumber': widget.phoneNumber.text.trim(),
+            },
+          );
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               backgroundColor: Colors.green,
@@ -48,7 +59,7 @@ class SendOTPButton extends StatelessWidget {
           // Todo: USE THIS
           BlocProvider.of<SendOTPBloc>(context).add(
             CallOtpEvent(
-              phoneNumber: phoneNumber.text.trim(),
+              phoneNumber: widget.phoneNumber.text.trim(),
             ),
           );
         },

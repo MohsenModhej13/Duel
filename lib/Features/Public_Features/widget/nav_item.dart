@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_icon_button.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Public_Features/bloc/nav-cubit/navbar_cubit.dart';

@@ -12,12 +12,12 @@ class CheckOtpInitial extends CheckOTPState {}
 class CheckOTPLoading extends CheckOTPState {}
 
 class CheckOTPSuccess extends CheckOTPState {
-  final String token;
+  final CheckOTPModel model;
 
-  const CheckOTPSuccess({required this.token});
+  const CheckOTPSuccess(this.model);
 
   @override
-  List<Object> get props => [token];
+  List<Object> get props => [model];
 }
 
 class CheckOTPFailure extends CheckOTPState {}

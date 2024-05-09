@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Challenges_Features/widget/start_challenge_button.dart';

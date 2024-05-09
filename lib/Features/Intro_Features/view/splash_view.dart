@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Route/route_name.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';

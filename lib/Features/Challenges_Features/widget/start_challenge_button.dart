@@ -1,4 +1,4 @@
-import 'package:duel/Config/Constant/constants.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_elevate_button.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:flutter/material.dart';
