@@ -1,15 +1,15 @@
 part of 'check_otp_bloc.dart';
 
-class CheckOTPEvent extends Equatable {
+abstract class CheckOtpEvent extends Equatable {
+  const CheckOtpEvent();
+}
+
+class CallCheckOtp extends CheckOtpEvent {
   final String phoneNumber;
   final String otpPassword;
 
-  const CheckOTPEvent(
-    this.phoneNumber,
-    this.otpPassword,
-  );
+  const CallCheckOtp(this.phoneNumber, this.otpPassword);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [phoneNumber, otpPassword];
 }

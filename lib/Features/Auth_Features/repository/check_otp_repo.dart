@@ -7,7 +7,9 @@ class CheckOTPRepo {
   final AuthApiService apiService = AuthApiService();
 
   Future<CheckOTPModel> callCheckOTP(
-      String phoneNumber, String otpPassword) async {
+    String phoneNumber,
+    String otpPassword,
+  ) async {
     final response =
         await apiService.checkOtpRequest(phoneNumber, otpPassword: otpPassword);
     final decoding = jsonDecode(response.body);

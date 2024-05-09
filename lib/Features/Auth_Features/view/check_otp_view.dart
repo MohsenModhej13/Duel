@@ -3,11 +3,11 @@ import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/Route/route_name.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Auth_Features/bloc/check-otp-bloc/check_otp_bloc.dart';
+import 'package:duel/Features/Auth_Features/repository/check_otp_repo.dart';
 import 'package:duel/Features/Auth_Features/widget/pin_code_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../Core/Constant/constants.dart';
 
@@ -25,6 +25,7 @@ class _CheckOTPViewState extends State<CheckOTPView> {
   @override
   void initState() {
     pinCodeController = TextEditingController();
+
     super.initState();
   }
 
@@ -37,6 +38,7 @@ class _CheckOTPViewState extends State<CheckOTPView> {
   @override
   Widget build(BuildContext context) {
     final Mapper args = ModalRoute.of(context)!.settings.arguments as Mapper;
+    final blocProvider = BlocProvider.of<CheckOtpBloc>(context);
     final appTheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
@@ -52,23 +54,7 @@ class _CheckOTPViewState extends State<CheckOTPView> {
               ),
             ),
             SizedBox(height: 14.sp),
-            MyText(
-              title: ' گوش به زنگ باش !',
-              style: TextStyle(
-                fontFamily: 'dana_regular',
-                fontSize: ResponsiveLayout.isTablet(context) ? 19.sp : 18.sp,
-                foreground: Paint()
-                  ..shader = const LinearGradient(
-                    colors: <Color>[
-                      Color.fromARGB(255, 169, 201, 247),
-                      Color.fromARGB(255, 129, 180, 252),
-                    ],
-                  ).createShader(
-                    const Rect.fromLTWH(50, 0, 400, 0),
-                  ),
-              ),
-              textAlign: TextAlign.center,
-            ),
+            const KeepUpText(),
             SizedBox(height: 16.sp),
             MyText(
               title:
@@ -93,41 +79,47 @@ class _CheckOTPViewState extends State<CheckOTPView> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
-              width: Constants.screenSize(context).width * 0.8,
-              child: BlocListener<CheckOTPBloc, CheckOTPState>(
-                listener: (context, state) {
-                  print(state);
-                  if (state is CheckOTPSuccess) {
-                    Navigator.pushReplacementNamed(context, RouteName.navbar);
-                  }
-                },
-                child: ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<CheckOTPBloc>(context).add(
-                      CheckOTPEvent(
-                        args['phoneNumber'],
-                        pinCodeController.text.trim(),
+            BlocBuilder<CheckOtpBloc, CheckOtpState>(
+              bloc: CheckOtpBloc(CheckOTPRepo()),
+              builder: (context, state) {
+                switch (state) {
+                  case CheckOtpSuccess():
+                    return SizedBox(
+                      width: Constants.screenSize(context).width * 0.8,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          blocProvider;
+                          Navigator.pushReplacementNamed(
+                              context, RouteName.navbar);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.sp),
+                          ),
+                          backgroundColor: const Color(0xff3F8DFD),
+                          fixedSize: Size(64.sp, 17.sp),
+                        ),
+                        child: MyText(
+                          title: 'تایید',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'dana_demibold',
+                            fontSize: 16.8.sp,
+                          ),
+                        ),
                       ),
                     );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.sp),
-                    ),
-                    backgroundColor: const Color(0xff3F8DFD),
-                    fixedSize: Size(64.sp, 17.sp),
-                  ),
-                  child: MyText(
-                    title: 'تایید',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'dana_demibold',
-                      fontSize: 16.8.sp,
-                    ),
-                  ),
-                ),
-              ),
+                  case CheckOtpLoading():
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.blue));
+
+                  case CheckOtpFailure():
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.red));
+                  default:
+                    return const Text("You're in Default Case MODE");
+                }
+              },
             ),
           ],
         ),
@@ -136,15 +128,29 @@ class _CheckOTPViewState extends State<CheckOTPView> {
   }
 }
 
+class KeepUpText extends StatelessWidget {
+  const KeepUpText({
+    super.key,
+  });
 
-
-Widget otpBoxView(BuildContext context) => Container(
-      width: ResponsiveLayout.isTablet(context) ? 52.sp : 50.sp,
-      height: ResponsiveLayout.isTablet(context) ? 52.sp : 50.sp,
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.sp),
-        ),
-        color: Theme.of(context).colorScheme.inversePrimary,
+  @override
+  Widget build(BuildContext context) {
+    return MyText(
+      title: ' گوش به زنگ باش !',
+      style: TextStyle(
+        fontFamily: 'dana_regular',
+        fontSize: ResponsiveLayout.isTablet(context) ? 19.sp : 18.sp,
+        foreground: Paint()
+          ..shader = const LinearGradient(
+            colors: <Color>[
+              Color.fromARGB(255, 169, 201, 247),
+              Color.fromARGB(255, 129, 180, 252),
+            ],
+          ).createShader(
+            const Rect.fromLTWH(50, 0, 400, 0),
+          ),
       ),
+      textAlign: TextAlign.center,
     );
+  }
+}

@@ -1,23 +1,23 @@
 part of 'check_otp_bloc.dart';
 
-abstract class CheckOTPState extends Equatable {
-  const CheckOTPState();
+abstract class CheckOtpState extends Equatable {
+  const CheckOtpState();
 
   @override
   List<Object> get props => [];
 }
 
-class CheckOtpInitial extends CheckOTPState {}
+class CheckOtpInitial extends CheckOtpState {}
 
-class CheckOTPLoading extends CheckOTPState {}
+class CheckOtpLoading extends CheckOtpState {}
 
-class CheckOTPSuccess extends CheckOTPState {
-  final CheckOTPModel model;
+class CheckOtpSuccess extends CheckOtpState {
+  final String otpCode;
 
-  const CheckOTPSuccess(this.model);
+  const CheckOtpSuccess(this.otpCode);
 
   @override
-  List<Object> get props => [model];
+  List<Object> get props => [otpCode];
 }
 
-class CheckOTPFailure extends CheckOTPState {}
+class CheckOtpFailure extends CheckOtpState {}

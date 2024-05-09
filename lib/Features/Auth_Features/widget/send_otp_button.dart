@@ -32,9 +32,7 @@ class _SendOTPButtonState extends State<SendOTPButton> {
           Navigator.pushReplacementNamed(
             context,
             RouteName.checkOtp,
-            arguments: {
-              'phoneNumber': widget.phoneNumber.text.trim(),
-            },
+            arguments: {'phoneNumber': widget.phoneNumber.text.trim()},
           );
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

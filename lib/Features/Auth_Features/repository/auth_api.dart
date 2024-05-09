@@ -38,11 +38,15 @@ class AuthApiService {
     }
   }
 
+
+  // Sending Request to CheckOTP API.
   Future<http.Response> checkOtpRequest(
     String phoneNumber, {
     String? otpPassword,
   }) async {
     final parseUri = Uri.parse(checkOTPURL);
+
+
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',

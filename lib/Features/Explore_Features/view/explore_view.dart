@@ -1,4 +1,3 @@
-import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Features/Explore_Features/widget/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -16,12 +15,8 @@ class _ExploreViewState extends State<ExploreView> {
     return Scaffold(
       body: Column(
         children: [
-          const Row(
-            children: [
-              SearchInput(),
-            ],
-          ),
-          SizedBox(height: Constants.screenSize(context).height * 0.01),
+          const SearchInput(),
+          const Divider(),
           exploreBody(),
         ],
       ),
@@ -30,7 +25,6 @@ class _ExploreViewState extends State<ExploreView> {
 }
 
 Widget exploreBody() {
-  const imageApi = "https://picsum.photos/200/";
   return Expanded(child: cardTile);
 }
 
