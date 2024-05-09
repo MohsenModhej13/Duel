@@ -21,7 +21,7 @@ class AuthApiService {
       'phoneNumber': phoneNumber,
       'countriesCode': '98', // Consider making this dynamic or optional
       'TokenNotification': null,
-      'shogerCode':"خوش آمدید", // Optional parameter
+      'shogerCode': "خوش آمدید", // Optional parameter
     };
     final body = jsonEncode(map);
 
@@ -39,9 +39,9 @@ class AuthApiService {
   }
 
   Future<http.Response> checkOtpRequest(
-      String phoneNumber, {
-        String? otpPassword,
-      }) async {
+    String phoneNumber, {
+    String? otpPassword,
+  }) async {
     final parseUri = Uri.parse(checkOTPURL);
     final headers = {
       'Content-type': 'application/json',

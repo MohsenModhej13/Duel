@@ -1,5 +1,6 @@
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
+import 'package:duel/Core/Route/route_name.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +17,8 @@ class CheckOTPView extends StatefulWidget {
 
 class _CheckOTPViewState extends State<CheckOTPView> {
   late TextEditingController pinCodeController;
+  late final String? correctOTP;
+
   @override
   void initState() {
     pinCodeController = TextEditingController();
@@ -84,21 +87,13 @@ class _CheckOTPViewState extends State<CheckOTPView> {
                 textDirection: TextDirection.ltr,
                 child: PinCodeTextField(
                   appContext: context,
-                  textStyle:const TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w400),
+                  textStyle: const TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.w400),
                   pastedTextStyle: TextStyle(
                     color: Colors.green.shade600,
                     fontWeight: FontWeight.bold,
                   ),
                   length: 6,
-                  // obscureText: true,
-                  // obscuringCharacter: '*',
-                  // obscuringWidget: const FlutterLogo(
-                  //   size: 24,
-                  // ),
-                  // blinkWhenObscuring: true,
-                  // animationType: AnimationType.fade,
                   validator: (v) {
                     if (v!.length < 6) {
                       return "کد را کامل پر کنید";
@@ -132,12 +127,22 @@ class _CheckOTPViewState extends State<CheckOTPView> {
                       blurRadius: 10,
                     )
                   ],
-                  onCompleted: (v) {
-                    debugPrint("Completed");
+                  onCompleted: (enteredOTP) {
+                    if (enteredOTP == correctOTP) {
+                      // OTP verified, show Snackbar and navigate
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('تایید کد با موفقیت انجام شد!'),
+                        ),
+                      );
+                      Navigator.pushReplacementNamed(
+                        context,
+                        RouteName.home,
+                      ); // Replace with actual route name
+                    } else {
+                      debugPrint('Entered OTP does not match');
+                    }
                   },
-                  // onTap: () {
-                  //   print("Pressed");
-                  // },
                   onChanged: (value) {
                     debugPrint(value);
                     // setState(() {
@@ -146,8 +151,7 @@ class _CheckOTPViewState extends State<CheckOTPView> {
                   },
                   beforeTextPaste: (text) {
                     debugPrint("Allowing to paste $text");
-                    //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                    //but you can show anything you want here, like your pop up saying wrong paste format or etc
+
                     return true;
                   },
                 ),

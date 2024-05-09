@@ -1,8 +1,7 @@
 import 'dart:convert';
-
 import 'package:duel/Features/Auth_Features/repository/auth_api.dart';
 
-class AuthRepository {
+  class SendOTPRepo {
   final AuthApiService _apiService = AuthApiService();
 
   Future<String> callSendOtpApi(String phoneNumber) async {
