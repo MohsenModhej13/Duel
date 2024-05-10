@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../Core/Constant/constants.dart';
-import '../repository/check_otp_repo.dart';
 
 class CheckOTPView extends StatefulWidget {
   const CheckOTPView({super.key});

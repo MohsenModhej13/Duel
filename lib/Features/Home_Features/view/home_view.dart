@@ -13,11 +13,35 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SafeArea(
         child: Scaffold(
+          drawer: Drawer(),
+          appBar: AppBar(
+            centerTitle: true,
+            title: MyText(
+              title: 'Duel',
+              style: TextStyle(
+                fontFamily: 'dana_bold',
+                fontSize: ResponsiveLayout.isTablet(context) ? 20.sp : 19.sp,
+              ),
+            ),
+            actions: [
+              Icon(
+                Icons.notifications_outlined,
+                color: Constants.theme(context).primary,
+                size: 27,
+              ),
+              const SizedBox(width: 4),
+              Assets.icons.messages.image(
+                color: Constants.theme(context).primary,
+                filterQuality: FilterQuality.high,
+              ),
+              const SizedBox(width: 6),
+            ],
+            backgroundColor: Colors.transparent,
+          ),
           backgroundColor: Constants.theme(context).background,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              homeBannerStatus(context),
               storySection(context),
               const Divider(),
               postSection(context),
@@ -25,36 +49,4 @@ class HomeView extends StatelessWidget {
           ),
         ),
       );
-
-  Widget homeBannerStatus(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(
-        ResponsiveLayout.isTablet(context) ? 25.sp : 25.sp,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          MyText(
-            title: 'Duel',
-            style: TextStyle(
-              fontFamily: 'dana_bold',
-              fontSize: ResponsiveLayout.isTablet(context) ? 20.sp : 19.sp,
-            ),
-          ),
-          Wrap(
-            children: [
-              Icon(
-                Icons.notifications_outlined,
-                color: Constants.theme(context).primary,
-                size: 27,
-              ),
-              const SizedBox(width: 6),
-              Assets.icons.messages
-                  .image(color: Constants.theme(context).primary),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }

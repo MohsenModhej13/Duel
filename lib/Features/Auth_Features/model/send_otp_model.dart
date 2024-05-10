@@ -45,6 +45,6 @@ class SendOTPModel {
         countriesCode: map['countriesCode'].toString(),
         verificationCode: int.parse(map['verification_code']),
         stateUser: map['state_user'] as bool,
-        userId: int.parse(map['userId']),
+        userId: map['userId'],
       );
 }
