@@ -44,9 +44,13 @@ class _SendOTPButtonState extends State<SendOTPButton> {
               ),
             ),
           );
-        } else if (state is SendOTPFailure) {
+        }
+        else if (state is SendOTPFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('OTP sending failed! :(')));
+            const SnackBar(
+              content: Text('OTP sending failed! :('),
+            ),
+          );
         }
       },
       child: ElevatedButton(

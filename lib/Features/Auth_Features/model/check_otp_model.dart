@@ -28,9 +28,9 @@ class CheckOTPModel {
 
   // fetching data from CheckOTP API
   factory CheckOTPModel.fromMap(Mapper map) => CheckOTPModel(
-        isLoggedIn: map['isLoggedIn'] as bool,
+        isLoggedIn: map['isLoggedIn'],
         message: map['message'].toString(),
-        userId: int.parse(map['userId']),
+        userId: map['userId'],
         phoneNumber: map['phoneNumber'].toString(),
       );
 

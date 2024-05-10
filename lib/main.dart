@@ -15,7 +15,7 @@ void main() => runApp(
           BlocProvider(create: (context) => ThemeBloc()),
           BlocProvider(create: (context) => NavbarCubit()),
           BlocProvider(create: (context) => SendOTPBloc(SendOTPRepo())),
-          BlocProvider(create: (context) => CheckOtpBloc(CheckOTPRepo())),
+          BlocProvider(create: (context) => CheckOTPBloc(CheckOTPRepo())),
         ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

@@ -4,11 +4,11 @@ abstract class CheckOtpEvent extends Equatable {
   const CheckOtpEvent();
 }
 
-class CallCheckOtp extends CheckOtpEvent {
+class CallCheckOtpEvent extends CheckOtpEvent {
   final String phoneNumber;
   final String otpPassword;
 
-  const CallCheckOtp(this.phoneNumber, this.otpPassword);
+  const CallCheckOtpEvent(this.phoneNumber, this.otpPassword);
 
   @override
   List<Object?> get props => [phoneNumber, otpPassword];

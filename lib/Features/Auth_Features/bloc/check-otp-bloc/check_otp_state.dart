@@ -12,12 +12,12 @@ class CheckOtpInitial extends CheckOtpState {}
 class CheckOtpLoading extends CheckOtpState {}
 
 class CheckOtpSuccess extends CheckOtpState {
-  final String otpCode;
+  final CheckOTPModel model;
 
-  const CheckOtpSuccess(this.otpCode);
+  const CheckOtpSuccess(this.model);
 
   @override
-  List<Object> get props => [otpCode];
+  List<Object> get props => [model];
 }
 
 class CheckOtpFailure extends CheckOtpState {}

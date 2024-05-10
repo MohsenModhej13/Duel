@@ -1,30 +1,39 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
+import 'package:duel/Features/Auth_Features/model/check_otp_model.dart';
+import 'package:duel/Features/Auth_Features/repository/check_otp_repo.dart';
 import 'package:equatable/equatable.dart';
-import '../../repository/check_otp_repo.dart';
 
 part 'check_otp_event.dart';
 part 'check_otp_state.dart';
 
-class CheckOtpBloc extends Bloc<CheckOtpEvent, CheckOtpState> {
+class CheckOTPBloc extends Bloc<CheckOtpEvent, CheckOtpState> {
   final CheckOTPRepo otpRepo;
-  CheckOtpBloc(this.otpRepo) : super(CheckOtpInitial()) {
-    on<CallCheckOtp>(callCheckOTP);
+
+  CheckOTPBloc(this.otpRepo) : super(CheckOtpInitial()) {
+    on<CallCheckOtpEvent>(callCheckOTP);
   }
 
-  FutureOr<void> callCheckOTP(
-      CallCheckOtp event, Emitter<CheckOtpState> emit) async {
-    // App is Loading
+  FutureOr<void> callCheckOTP(CallCheckOtpEvent event, Emitter<CheckOtpState> emit) async {
     emit(CheckOtpLoading());
-
+    print("event: ${event}");
     try {
-      final otpData =
-          await otpRepo.callCheckOTP(event.phoneNumber, event.otpPassword);
-      emit(
-        CheckOtpSuccess(otpData.toString()),
+      final CheckOTPModel result = await otpRepo.callCheckOTP(
+        event.phoneNumber,
+        event.otpPassword,
       );
+      print("result: ${result}");
+      if (result.isLoggedIn == true) {
+
+        emit(
+          CheckOtpSuccess(result),
+        );
+      } else {
+        emit(CheckOtpFailure());
+      }
     } catch (e) {
-      print(e.toString());
+      e.toString();
     }
   }
 }
