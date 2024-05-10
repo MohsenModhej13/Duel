@@ -17,13 +17,11 @@ class CheckOTPBloc extends Bloc<CheckOtpEvent, CheckOtpState> {
 
   FutureOr<void> callCheckOTP(CallCheckOtpEvent event, Emitter<CheckOtpState> emit) async {
     emit(CheckOtpLoading());
-    print("event: $event");
     try {
       final CheckOTPModel result = await otpRepo.callCheckOTP(
         event.phoneNumber,
         event.otpPassword,
       );
-      print("result: $result");
       if (result.isLoggedIn == true) {
 
         emit(
