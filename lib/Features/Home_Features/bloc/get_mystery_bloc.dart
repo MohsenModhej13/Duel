@@ -22,7 +22,7 @@ class GetMysteryBloc extends Bloc<GetMysteryEvent, GetMysteryState> {
 
     try {
       final mysteryData =
-          await mysteryRepo.getMystery(event.userId, event.limit);
+          await mysteryRepo.getMystery(event.limit);
 
       emit(GetMysterySuccess(mysteries: mysteryData));
     } catch (e) {}
