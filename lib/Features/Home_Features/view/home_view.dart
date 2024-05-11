@@ -1,6 +1,6 @@
 import 'package:duel/Core/Components/my_drawer.dart';
-import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Home_Features/widget/post_section.dart';
@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
             children: [
               storySection(context),
               const Divider(),
-              postSection(context),
+              PostSection(),
             ],
           ),
         ),

@@ -5,11 +5,10 @@ abstract class GetMysteryEvent extends Equatable {
 }
 
 class CallMysteryEvent extends GetMysteryEvent {
-  final String userId;
   final String limit;
 
-  const CallMysteryEvent(this.userId, this.limit);
+  const CallMysteryEvent( this.limit);
 
   @override
-  List<Object?> get props => [userId, limit];
+  List<Object?> get props => [ limit];
 }
