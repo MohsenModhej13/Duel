@@ -1,4 +1,4 @@
-  import 'package:duel/Core/storage/models/ViewModel/CommentsMy.dart';
+  import 'package:duel/Core/Storage/models/ViewModel/CommentsMy.dart';
 
 class Commentmodel {
   CommentsMy Comments;

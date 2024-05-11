@@ -1,5 +1,5 @@
 
-import 'package:duel/Core/storage/models/User.dart';
+import 'package:duel/Core/Storage/models/User.dart';
 
 class Mystery {
   int id;

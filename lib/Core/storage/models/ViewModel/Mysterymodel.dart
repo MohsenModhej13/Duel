@@ -1,9 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:duel/Core/storage/models/User.dart';
-import 'package:duel/Core/storage/models/ViewModel/CommentsMy.dart';
-import 'package:duel/Core/storage/models/ViewModel/Mystery.dart';
-import 'package:duel/Core/storage/models/ViewModel/Questionmystery.dart';
+import 'package:duel/Core/Storage/models/User.dart';
+import 'package:duel/Core/Storage/models/ViewModel/CommentsMy.dart';
+import 'package:duel/Core/Storage/models/ViewModel/Mystery.dart';
+import 'package:duel/Core/Storage/models/ViewModel/Questionmystery.dart';
 
 class Mysterymodel {
   User user;

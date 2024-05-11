@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:duel/Core/Theme/app_theme.dart';
-import 'package:duel/Core/storage/shared_pref.dart';
+import 'package:duel/Core/Storage/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 part 'theme_event.dart';

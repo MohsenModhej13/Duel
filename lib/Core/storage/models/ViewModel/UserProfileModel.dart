@@ -1,6 +1,6 @@
-import 'package:duel/Core/storage/models/User.dart';
-import 'package:duel/Core/storage/models/ViewModel/Mystery.dart';
-import 'package:duel/Core/storage/models/ViewModel/SaveMystery.dart';
+import 'package:duel/Core/Storage/models/User.dart';
+import 'package:duel/Core/Storage/models/ViewModel/Mystery.dart';
+import 'package:duel/Core/Storage/models/ViewModel/SaveMystery.dart';
 
 
 class UserProfileModel {

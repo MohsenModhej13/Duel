@@ -1,9 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:duel/Core/storage/models/User.dart';
-import 'package:duel/Core/storage/models/ViewModel/Courses.dart';
-import 'package:duel/Core/storage/models/ViewModel/Headline.dart';
-import 'package:duel/Core/storage/models/ViewModel/Meeting.dart';
+import 'package:duel/Core/Storage/models/User.dart';
+import 'package:duel/Core/Storage/models/ViewModel/Courses.dart';
+import 'package:duel/Core/Storage/models/ViewModel/Headline.dart';
+import 'package:duel/Core/Storage/models/ViewModel/Meeting.dart';
 
 class SessionsofCourseViewModel {
   User user;

@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:duel/Core/storage/models/User.dart';
+import 'package:duel/Core/Storage/models/User.dart';
 
 class CommentsMy {
   int id;

@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Route/route_name.dart';
+import 'package:duel/Core/Storage/shared_pref.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,10 +18,17 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  dynamic navigate() {
+  navigate() {
     Timer(
-      const Duration(milliseconds: 2700),
-      () => Navigator.pushReplacementNamed(context, RouteName.intro),
+      const Duration(seconds: 3),
+      () async {
+        if (await SharedPrefStorage.getIntroStatus()) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil(RouteName.navbar, (route) => false);
+        } else {
+          Navigator.of(context).pushReplacementNamed(RouteName.intro);
+        }
+      },
     );
   }
 

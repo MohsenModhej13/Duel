@@ -2,6 +2,7 @@ import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/Route/route_name.dart';
+import 'package:duel/Core/Storage/shared_pref.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,6 +54,7 @@ class IntroView extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
+                SharedPrefStorage.setIntroStatus();
                 Navigator.pushReplacementNamed(context, RouteName.sendOtp);
               },
               style: ElevatedButton.styleFrom(

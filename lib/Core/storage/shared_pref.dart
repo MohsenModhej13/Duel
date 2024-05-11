@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefStorage {
-  final SharedPreferences _prefs;
+  late SharedPreferences prefs;
 
-  SharedPrefStorage(this._prefs);
+  SharedPrefStorage(this.prefs);
 
   static Future<SharedPrefStorage> create() async {
     try {
@@ -23,11 +23,11 @@ class SharedPrefStorage {
   static const String isDark = 'is_dark';
 
   Future<bool> getBool(String key) async {
-    return _prefs.getBool(key) ?? false;
+    return prefs.getBool(key) ?? false;
   }
 
   Future<void> setBool(String key, bool value) async {
-    await _prefs.setBool(key, value);
+    await prefs.setBool(key, value);
   }
 
   // Example usage:
@@ -36,8 +36,22 @@ class SharedPrefStorage {
     storage.getBool(isDark);
   }
 
- static Future<void> setTheme(bool isDark) async {
+  static Future<void> setTheme(bool isDark) async {
     final prefs = await create();
     await prefs.setBool('is_dark', !isDark);
+  }
+
+  static Future<bool> getIntroStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final bool status = prefs.getBool('intro') ?? false;
+
+    return status;
+  }
+
+  static Future<void> setIntroStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setBool('intro', true);
   }
 }
