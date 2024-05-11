@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:duel/Core/Components/my_drawer.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Constant/constants.dart';
@@ -70,10 +71,20 @@ class _HomeViewState extends State<HomeView> {
                         shrinkWrap: true,
                         itemCount: models.length,
                         itemBuilder: (context, index) {
-                          return Image.network(
-                            "$baseUrlIMG${models[index].image}",
-                            width: Constants.screenSize(context).width,
-                            height: Constants.screenSize(context).height * 0.3,
+                          return Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Column(
+                                children: [
+                                  AspectRatio(
+                                    aspectRatio: 9 / 16,
+                                    child: Image.network(
+                                        "$baseUrlIMG${models[index].image}"),
+                                  ),
+                                ],
+                              ),
+                            ),
                           );
                         },
                       );
@@ -89,28 +100,24 @@ class _HomeViewState extends State<HomeView> {
                     }
                   },
                 ),
-                Positioned(
-                  right: 10,
-                  top: Constants.screenSize(context).height * 0.01,
-                  child: Container(
-                    decoration: ShapeDecoration(
-                      color: Constants.theme(context).surface.withOpacity(0.7),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusDirectional.only(
-                          bottomEnd: Radius.circular(20.sp),
-                          topEnd: Radius.circular(20.sp),
-                          topStart: Radius.circular(20.sp),
-                        ),
+                Container(
+                  decoration: ShapeDecoration(
+                    color: Constants.theme(context).surface.withOpacity(0.7),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusDirectional.only(
+                        bottomEnd: Radius.circular(20.sp),
+                        topEnd: Radius.circular(20.sp),
+                        topStart: Radius.circular(20.sp),
                       ),
                     ),
-                    padding: EdgeInsets.all(8.sp),
-                    child: MyText(
-                      title: 'کوچولووووووووو جر نزن',
-                      style: TextStyle(
-                        fontSize: 9.sp,
-                        fontFamily: 'dana_regular',
-                        color: Constants.theme(context).primary,
-                      ),
+                  ),
+                  padding: EdgeInsets.all(8.sp),
+                  child: MyText(
+                    title: 'کوچولووووووووو جر نزن',
+                    style: TextStyle(
+                      fontSize: 9.sp,
+                      fontFamily: 'dana_regular',
+                      color: Constants.theme(context).primary,
                     ),
                   ),
                 ),
