@@ -8,4 +8,5 @@ const String checkOTPURL = '$baseUrl/api/auth/CheckOtp';
 const String getChallengesURL ="$baseUrl/api/Challenging/GetChallengingHomePageSp";
 
 //Content
-const String getContentURL ="$baseUrl/api/Content/GetMysteryExploler";
+const String getMysteriesURL ="$baseUrl/api/Content/GetMysteryExploler";
+const String addNewStoryURL ="$baseUrl/api/Content/NewStory";
