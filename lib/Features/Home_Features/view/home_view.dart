@@ -7,6 +7,7 @@ import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Challenges_Features/widget/start_challenge_button.dart';
 import 'package:duel/Features/Home_Features/bloc/get_mystery_bloc.dart';
 import 'package:duel/Features/Home_Features/widget/story_section.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -73,17 +74,17 @@ class _HomeViewState extends State<HomeView> {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(3),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Column(
-                                children: [
-                                  AspectRatio(
-                                    aspectRatio: 9 / 16,
-                                    child: Image.network(
-                                        "$baseUrlIMG${models[index].image}"),
-                                  ),
-                                ],
-                              ),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    width: Constants.screenSize(context).width * 0.95,
+                                    height: Constants.screenSize(context).height * 0.55,
+                                      fit: BoxFit.fill,
+                                      "$baseUrlIMG${models[index].image}"),
+                                ),
+                              ],
                             ),
                           );
                         },
