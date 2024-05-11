@@ -72,18 +72,14 @@ class _HomeViewState extends State<HomeView> {
                         itemCount: models.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.all(3),
+                            padding:const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Column(
-                                children: [
-                                  AspectRatio(
-                                    aspectRatio: 9 / 16,
-                                    child: Image.network(
-                                        "$baseUrlIMG${models[index].image}"),
-                                  ),
-                                ],
-                              ),
+                              borderRadius: BorderRadius.circular(25.0),
+                              child: Image.network(
+                                width: Constants.screenSize(context).width * 0.9,
+                                  height: Constants.screenSize(context).height * 0.55,
+                                  fit: BoxFit.fill,
+                                  "$baseUrlIMG${models[index].image}"),
                             ),
                           );
                         },
