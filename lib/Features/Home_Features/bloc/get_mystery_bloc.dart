@@ -6,6 +6,7 @@ import 'package:duel/Features/Home_Features/repository/get_mystery_repo.dart';
 import 'package:equatable/equatable.dart';
 
 part 'get_mystery_event.dart';
+
 part 'get_mystery_state.dart';
 
 class GetMysteryBloc extends Bloc<GetMysteryEvent, GetMysteryState> {
@@ -19,9 +20,10 @@ class GetMysteryBloc extends Bloc<GetMysteryEvent, GetMysteryState> {
       CallMysteryEvent event, Emitter<GetMysteryState> emit) async {
     emit(GetMysteryLoading());
 
-    final mysteryData = await mysteryRepo.getMystery(event.limit);
-    print(mysteryData);
+    try {
+      final mysteryData = await mysteryRepo.getMystery(event.limit);
 
-    emit(GetMysterySuccess(mysteries: mysteryData));
+      emit(GetMysterySuccess(mysteries: mysteryData));
+    } catch (e) {}
   }
 }
