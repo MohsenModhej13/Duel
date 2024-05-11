@@ -1,7 +1,6 @@
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/Route/route_name.dart';
-import 'package:duel/Core/Storage/shared_pref.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Auth_Features/bloc/check-otp-bloc/check_otp_bloc.dart';
 import 'package:duel/Features/Auth_Features/widget/pin_code_widget.dart';

@@ -35,28 +35,28 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.person),
+              leading: const Icon(Icons.person),
               title: MyText(
                 title: 'پروفایل',
                 style: TextStyle(fontFamily: 'dana_light', fontSize: 15.sp),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.gamepad),
+              leading: const Icon(Icons.gamepad),
               title: MyText(
                 title: 'چالش های من',
                 style: TextStyle(fontFamily: 'dana_light', fontSize: 15.sp),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.flag),
+              leading: const Icon(Icons.flag),
               title: MyText(
                 title: 'قوانین دویل',
                 style: TextStyle(fontFamily: 'dana_light', fontSize: 15.sp),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: const Icon(Icons.settings),
               title: MyText(
                 title: 'تنظیمات',
                 style: TextStyle(fontFamily: 'dana_light', fontSize: 15.sp),

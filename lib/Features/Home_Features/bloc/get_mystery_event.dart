@@ -8,7 +8,7 @@ class CallMysteryEvent extends GetMysteryEvent {
   final String userId;
   final String limit;
 
-  CallMysteryEvent(this.userId, this.limit);
+  const CallMysteryEvent(this.userId, this.limit);
 
   @override
   List<Object?> get props => [userId, limit];
