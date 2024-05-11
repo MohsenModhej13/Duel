@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget navBarItem(NavbarCubit navBloc, BuildContext context) {
   return BottomAppBar(
-    height: Constants.screenSize(context).height * 0.10.sp,
+    height: Constants.screenSize(context).height * 0.1.sp,
     surfaceTintColor: Constants.theme(context).background,
     color: Constants.theme(context).brightness == Brightness.light
         ? Colors.white
@@ -34,7 +34,7 @@ Widget navBarItem(NavbarCubit navBloc, BuildContext context) {
           ),
           onPressed: () => navBloc.onIndexTap(1),
         ),
-        const SizedBox(width: 20), // Space for FAB
+        const SizedBox(width: 20),
         MyIconButton(
           icon: Assets.icons.game.image(
             color: navBloc.selectedIndex == 3 ? Colors.blue : Colors.grey,

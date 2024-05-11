@@ -30,7 +30,7 @@ class CheckOTPModel {
   factory CheckOTPModel.fromMap(Mapper map) => CheckOTPModel(
         isLoggedIn: map['isLoggedIn'],
         message: map['message'].toString(),
-        userId: map['userId'],
+        userId: map['userId'] ?? 0,
         phoneNumber: map['phoneNumber'].toString(),
       );
 

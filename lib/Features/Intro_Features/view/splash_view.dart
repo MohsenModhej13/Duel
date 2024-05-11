@@ -23,8 +23,12 @@ class _SplashViewState extends State<SplashView> {
       const Duration(seconds: 3),
       () async {
         if (await SharedPrefStorage.getIntroStatus()) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil(RouteName.navbar, (route) => false);
+          if (await SharedPrefStorage.getUserID() != null) {
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(RouteName.navbar, (route) => false);
+          } else {
+            Navigator.of(context).pushReplacementNamed(RouteName.sendOtp);
+          }
         } else {
           Navigator.of(context).pushReplacementNamed(RouteName.intro);
         }
@@ -39,22 +43,20 @@ class _SplashViewState extends State<SplashView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Center(
-        child: FadeInDown(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Assets.images.splashLogo.image(
-                width: Constants.screenSize(context).width,
-                height: Constants.screenSize(context).height * 0.5.sp,
-              ),
-            ],
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: Center(
+          child: FadeInDown(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Assets.images.splashLogo.image(
+                  width: Constants.screenSize(context).width,
+                  height: Constants.screenSize(context).height * 0.5.sp,
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

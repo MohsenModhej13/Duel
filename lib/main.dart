@@ -2,6 +2,8 @@ import 'package:duel/Features/Auth_Features/bloc/check-otp-bloc/check_otp_bloc.d
 import 'package:duel/Features/Auth_Features/bloc/send-otp-bloc/send_otp_bloc.dart';
 import 'package:duel/Features/Auth_Features/repository/check_otp_repo.dart';
 import 'package:duel/Features/Auth_Features/repository/send_otp_repo.dart';
+import 'package:duel/Features/Home_Features/bloc/get_mystery_bloc.dart';
+import 'package:duel/Features/Home_Features/repository/get_mystery_repo.dart';
 import 'package:duel/Features/Public_Features/bloc/nav-cubit/navbar_cubit.dart';
 import 'package:duel/Features/Public_Features/bloc/theme-bloc/theme_bloc.dart';
 import 'package:duel/advance_main.dart';
@@ -16,6 +18,7 @@ void main() => runApp(
           BlocProvider(create: (context) => NavbarCubit()),
           BlocProvider(create: (context) => SendOTPBloc(SendOTPRepo())),
           BlocProvider(create: (context) => CheckOTPBloc(CheckOTPRepo())),
+          BlocProvider(create: (context) => GetMysteryBloc(GetMysteryRepo())),
         ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

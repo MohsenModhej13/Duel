@@ -8,3 +8,6 @@ class Constants {
 }
 
 typedef Mapper = Map<String, dynamic>;
+
+const String Intro = 'intro';
+const String userID = 'userId';

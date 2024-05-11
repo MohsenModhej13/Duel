@@ -2,34 +2,62 @@ import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Challenges_Features/widget/start_challenge_button.dart';
+import 'package:duel/Features/Home_Features/bloc/get_mystery_bloc.dart';
+import 'package:duel/Features/Home_Features/bloc/get_mystery_bloc.dart';
+import 'package:duel/Features/Home_Features/repository/get_mystery_repo.dart';
 import 'package:duel/Features/Posts_Features/widget/post_banner_status.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const String postSubText =
     'چه کسی عاشق معما و بازی‌های فکری چالش برانگیز نیست؟ معماها به ما کمک می‌کنند بیشتر راجع به مسائل مختلف فکر کنم و فکر خودمان را به چالش بکشیم. اغلب معماها از تکنیک‌هایی استفاده می‌کنند که ذهن ...';
 
-Widget postSection(BuildContext context) => Column(
+Widget postSection(BuildContext context) =>
+    Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         postBannerStatus(context),
         Stack(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15.sp),
-              child: Image.asset(
-                'assets/Images/rect.png',
-                fit: BoxFit.cover,
-                width: Constants.screenSize(context).width * 0.92.sp,
-                height: Constants.screenSize(context).height * 0.30.sp,
-              ),
+
+            BlocConsumer<GetMysteryBloc, GetMysteryState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                final models = GetMysteryRepo();
+                return ListView.builder(
+                  // itemCount: models.,
+                  itemBuilder: (context, index) {
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15.sp),
+                      child: Image.asset(
+                        'assets/Images/rect.png',
+                        fit: BoxFit.cover,
+                        width: Constants
+                            .screenSize(context)
+                            .width * 0.92.sp,
+                        height: Constants
+                            .screenSize(context)
+                            .height * 0.30.sp,
+                      ),
+                    );
+                  },
+
+                );
+              },
             ),
             Positioned(
               right: 10,
-              top: Constants.screenSize(context).height * 0.01,
+              top: Constants
+                  .screenSize(context)
+                  .height * 0.01,
               child: Container(
                 decoration: ShapeDecoration(
-                  color: Constants.theme(context).surface.withOpacity(0.7),
+                  color: Constants
+                      .theme(context)
+                      .surface
+                      .withOpacity(0.7),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.only(
                       bottomEnd: Radius.circular(20.sp),
@@ -44,7 +72,9 @@ Widget postSection(BuildContext context) => Column(
                   style: TextStyle(
                     fontSize: 9.sp,
                     fontFamily: 'dana_regular',
-                    color: Constants.theme(context).primary,
+                    color: Constants
+                        .theme(context)
+                        .primary,
                   ),
                 ),
               ),
@@ -68,25 +98,37 @@ Widget postSection(BuildContext context) => Column(
         ),
         SizedBox(height: 7.sp),
         const StartChallengeButton(),
-        SizedBox(height: Constants.screenSize(context).height * 0.001.sp),
-        Divider(color: Constants.theme(context).surface),
+        SizedBox(height: Constants
+            .screenSize(context)
+            .height * 0.001.sp),
+        Divider(color: Constants
+            .theme(context)
+            .surface),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.sp),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Assets.icons.archive
-                  .image(color: Constants.theme(context).primary),
+                  .image(color: Constants
+                  .theme(context)
+                  .primary),
               Assets.icons.export
-                  .image(color: Constants.theme(context).primary),
+                  .image(color: Constants
+                  .theme(context)
+                  .primary),
               const Spacer(),
               Wrap(
                 children: [
                   Assets.icons.comments.image(
-                    color: Constants.theme(context).primary,
+                    color: Constants
+                        .theme(context)
+                        .primary,
                   ),
                   Assets.icons.like.image(
-                    color: Constants.theme(context).primary,
+                    color: Constants
+                        .theme(context)
+                        .primary,
                   ),
                 ],
               )

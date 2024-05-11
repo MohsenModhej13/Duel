@@ -1,3 +1,4 @@
+import 'package:duel/Core/Components/my_drawer.dart';
 import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
@@ -13,7 +14,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SafeArea(
         child: Scaffold(
-          drawer: Drawer(),
+          drawer: const MyDrawer(),
           appBar: AppBar(
             centerTitle: true,
             title: MyText(

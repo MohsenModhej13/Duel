@@ -1,6 +1,7 @@
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/Route/route_name.dart';
+import 'package:duel/Core/Storage/shared_pref.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Auth_Features/bloc/check-otp-bloc/check_otp_bloc.dart';
 import 'package:duel/Features/Auth_Features/widget/pin_code_widget.dart';
@@ -96,19 +97,18 @@ class _CheckOTPViewState extends State<CheckOTPView> {
               width: Constants.screenSize(context).width * 0.8,
               child: BlocListener<CheckOTPBloc, CheckOtpState>(
                 listener: (context, state) {
-
                   if (state is CheckOtpSuccess) {
                     Navigator.pushReplacementNamed(context, RouteName.navbar);
                   }
                 },
                 child: ElevatedButton(
                   onPressed: () {
-                   context.read<CheckOTPBloc>().add(
-                     CallCheckOtpEvent(
-                        args['phoneNumber'],
-                        pinCodeController.text.trim(),
-                      ),
-                    );
+                    context.read<CheckOTPBloc>().add(
+                          CallCheckOtpEvent(
+                            args['phoneNumber'],
+                            pinCodeController.text.trim(),
+                          ),
+                        );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -134,8 +134,6 @@ class _CheckOTPViewState extends State<CheckOTPView> {
     );
   }
 }
-
-
 
 Widget otpBoxView(BuildContext context) => Container(
       width: ResponsiveLayout.isTablet(context) ? 52.sp : 50.sp,

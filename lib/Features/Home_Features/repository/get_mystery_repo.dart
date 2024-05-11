@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:duel/Core/Storage/models/ViewModel/Mystery.dart';
 import 'package:duel/Features/Home_Features/api/content_api.dart';
 
@@ -7,8 +8,8 @@ class GetMysteryRepo{
 
   late ContentApi contentApi;
 
-  Future<List<Mystery>> getMysteries(String userId, String limit)async{
-    final response =await contentApi.getMysteries(userId, limit);
+  Future<List<Mystery>> getMystery(String userId, String limit)async{
+    final response =await contentApi.getMystery(userId, limit);
 
     final decode = jsonDecode(response.body);
 
