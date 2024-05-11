@@ -4,8 +4,6 @@ import 'package:duel/Core/Storage/shared_pref.dart';
 import 'package:duel/Features/Home_Features/api/content_api.dart';
 
 class GetMysteryRepo{
-  GetMysteryRepo();
-
   final ContentApi contentApi = ContentApi();
 
   Future<List<Mystery>> getMystery(String limit)async{
