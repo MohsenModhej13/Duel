@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:duel/Core/Components/my_drawer.dart';
+import 'package:duel/Core/Components/my_progress_bar.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
@@ -7,6 +7,7 @@ import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Challenges_Features/widget/start_challenge_button.dart';
 import 'package:duel/Features/Home_Features/bloc/get_mystery_bloc.dart';
 import 'package:duel/Features/Home_Features/widget/story_section.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,84 +72,103 @@ class _HomeViewState extends State<HomeView> {
                         shrinkWrap: true,
                         itemCount: models.length,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(3),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15),
-                              child: Column(
+                          return Column(
+                            children: [
+                              Stack(
                                 children: [
                                   AspectRatio(
-                                    aspectRatio: 9 / 16,
-                                    child: Image.network(
-                                        "$baseUrlIMG${models[index].image}"),
+                                    aspectRatio: 0.6,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(15),
+                                        child: Image.network(
+                                          "$baseUrlIMG${models[index].image}",
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Positioned(
+                                    bottom: 0,
+                                    left: 74,
+                                    right: 74,
+                                    child: StartChallengeButton(),
+                                  ),
+                                  Divider(
+                                      color: Constants.theme(context).surface),
+
+                                  Positioned(
+                                    top:20,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10.sp),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Assets.icons.archive.image(
+                                              color: Constants.theme(context)
+                                                  .primary),
+                                          Assets.icons.export.image(
+                                              color: Constants.theme(context)
+                                                  .primary),
+                                          const Spacer(),
+                                          Wrap(
+                                            children: [
+                                              Assets.icons.comments.image(
+                                                color: Constants.theme(context)
+                                                    .primary,
+                                              ),
+                                              Assets.icons.like.image(
+                                                color: Constants.theme(context)
+                                                    .primary,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
+                            ],
                           );
                         },
                       );
                     }
                     if (state is GetMysteryLoading) {
-                      return const CircularProgressIndicator(
+                      return const MyProgressBar(
                         color: Colors.blue,
                       );
                     } else {
-                      return const CircularProgressIndicator(
+                      return const MyProgressBar(
                         color: Colors.red,
                       );
                     }
                   },
                 ),
-                Container(
-                  decoration: ShapeDecoration(
-                    color: Constants.theme(context).surface.withOpacity(0.7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusDirectional.only(
-                        bottomEnd: Radius.circular(20.sp),
-                        topEnd: Radius.circular(20.sp),
-                        topStart: Radius.circular(20.sp),
-                      ),
-                    ),
-                  ),
-                  padding: EdgeInsets.all(8.sp),
-                  child: MyText(
-                    title: 'کوچولووووووووو جر نزن',
-                    style: TextStyle(
-                      fontSize: 9.sp,
-                      fontFamily: 'dana_regular',
-                      color: Constants.theme(context).primary,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 7.sp),
-                const StartChallengeButton(),
-                SizedBox(
-                    height: Constants.screenSize(context).height * 0.001.sp),
-                Divider(color: Constants.theme(context).surface),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.sp),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Assets.icons.archive
-                          .image(color: Constants.theme(context).primary),
-                      Assets.icons.export
-                          .image(color: Constants.theme(context).primary),
-                      const Spacer(),
-                      Wrap(
-                        children: [
-                          Assets.icons.comments.image(
-                            color: Constants.theme(context).primary,
-                          ),
-                          Assets.icons.like.image(
-                            color: Constants.theme(context).primary,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                // Container(
+                //   decoration: ShapeDecoration(
+                //     color: Constants.theme(context).surface.withOpacity(0.7),
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadiusDirectional.only(
+                //         bottomEnd: Radius.circular(20.sp),
+                //         topEnd: Radius.circular(20.sp),
+                //         topStart: Radius.circular(20.sp),
+                //       ),
+                //     ),
+                //   ),
+                //   padding: EdgeInsets.all(8.sp),
+                //   child: MyText(
+                //     title: 'کوچولووووووووو جر نزن',
+                //     style: TextStyle(
+                //       fontSize: 9.sp,
+                //       fontFamily: 'dana_regular',
+                //       color: Constants.theme(context).primary,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
