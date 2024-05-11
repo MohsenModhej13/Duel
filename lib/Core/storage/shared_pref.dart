@@ -1,3 +1,4 @@
+import 'package:duel/Core/Constant/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -44,7 +45,7 @@ class SharedPrefStorage {
   static Future<bool> getIntroStatus() async {
     final prefs = await SharedPreferences.getInstance();
 
-    final bool status = prefs.getBool('intro') ?? false;
+    final bool status = prefs.getBool(Intro) ?? false;
 
     return status;
   }
@@ -52,6 +53,19 @@ class SharedPrefStorage {
   static Future<void> setIntroStatus() async {
     final prefs = await SharedPreferences.getInstance();
 
-    await prefs.setBool('intro', true);
+    await prefs.setBool(Intro, true);
+  }
+
+  static Future<String?> getUserID() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final String? userStatus = prefs.getString(userID);
+    return userStatus;
+  }
+
+  static Future<void> setUserID(String userId) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString(userID, userId);
   }
 }
