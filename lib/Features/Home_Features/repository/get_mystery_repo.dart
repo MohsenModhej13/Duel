@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:duel/Core/Storage/models/ViewModel/Mystery.dart';
 import 'package:duel/Core/Storage/shared_pref.dart';
-import 'package:duel/Features/Home_Features/api/content_api.dart';
+import 'package:duel/Core/Api/content_api.dart';
 
 class GetMysteryRepo{
   final ContentApi contentApi = ContentApi();

@@ -1,39 +1,11 @@
 import 'dart:convert';
-
 import 'package:duel/Core/Constant/base_url.dart';
 import 'package:http/http.dart' as http;
+import 'package:duel/Features/Home_Features/model/add_story_model.dart';
 
-import '../model/add_story_model.dart';
-
-class ContentApi{
-
-  Future<http.Response>getMysteries(String userId, String limit)async{
-    final parseUri = Uri.parse(getMysteriesURL);
-    final headers = {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-    };
-
-    final map = {
-      'userId': userId,
-      'limit': limit,
-    };
-    final body = jsonEncode(map);
-
-    final response = await http.post(parseUri, headers: headers, body: body);
-
-    if (response.statusCode == 200) {
-      return response;
-    } else {
-      throw Exception(
-        'Failed to get mystery request (Status Code: ${response.statusCode})',
-      );
-    }
-
-  }
-
+class StoriesAPI {
   //Story
-  Future<http.Response>addStory(AddStoryModel model)async{
+  Future<http.Response> addStory(AddStoryModel model) async {
     final parseUri = Uri.parse(addNewStoryURL);
     final headers = {
       'Content-type': 'application/json',
@@ -64,6 +36,5 @@ class ContentApi{
         'Failed to add story (Status Code: ${response.statusCode})',
       );
     }
-
   }
 }

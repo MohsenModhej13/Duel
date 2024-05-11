@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:duel/Core/Components/my_drawer.dart';
+import 'package:duel/Core/Components/my_progress_bar.dart';
 import 'package:duel/Core/Components/my_text.dart';
 import 'package:duel/Core/Constant/constants.dart';
 import 'package:duel/Core/Layout/responsive_layout.dart';
 import 'package:duel/Core/gen/assets.gen.dart';
 import 'package:duel/Features/Challenges_Features/widget/start_challenge_button.dart';
-import 'package:duel/Features/Home_Features/bloc/get_mystery_bloc.dart';
+import 'package:duel/Features/Home_Features/bloc/MysteryBloc/get_mystery_bloc.dart';
 import 'package:duel/Features/Home_Features/widget/story_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -72,12 +73,15 @@ class _HomeViewState extends State<HomeView> {
                         itemCount: models.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding:const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 20),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(25.0),
                               child: Image.network(
-                                width: Constants.screenSize(context).width * 0.9,
-                                  height: Constants.screenSize(context).height * 0.55,
+                                  width:
+                                      Constants.screenSize(context).width * 0.9,
+                                  height: Constants.screenSize(context).height *
+                                      0.55,
                                   fit: BoxFit.fill,
                                   "$baseUrlIMG${models[index].image}"),
                             ),
@@ -86,11 +90,11 @@ class _HomeViewState extends State<HomeView> {
                       );
                     }
                     if (state is GetMysteryLoading) {
-                      return const CircularProgressIndicator(
+                      return const MyProgressBar(
                         color: Colors.blue,
                       );
                     } else {
-                      return const CircularProgressIndicator(
+                      return const MyProgressBar(
                         color: Colors.red,
                       );
                     }
